@@ -42,6 +42,7 @@ func main() {
 			lexTokens = append(lexTokens, stringue)
 			stringue = ""
 		}
+
 	}
 	if stringue != "" {
 		lexTokens = append(lexTokens, stringue)
