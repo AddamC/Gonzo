@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"regexp"
+	"strconv"
+	"strings"
 )
 
 // import (
@@ -13,7 +15,7 @@ import (
 
 // var Literals []string // The tokens representing literal strings
 var Keywords []string
-
+var TiposTokens []string
 var Tokens []string // All of the tokens (including literals and keywords)
 var Tipos []string
 
@@ -44,11 +46,19 @@ func main() {
 		lexTokens = append(lexTokens, stringue)
 	}
 
+	words := strings.Fields(str)
+
 	initTokens()
-	verificarTokens(str, criarRegras())
+	verificarTokens(words, criarRegras())
 }
 
 func initTokens() {
+	TiposTokens = []string{
+		"Tipo de Dados",
+		"Variável",
+		"Atribuição",
+		"Instruçaõ de Entrada ou Saida de Dados",
+	}
 	Keywords = []string{
 		"seGonzo",
 		"entaoGonzo",
@@ -72,12 +82,23 @@ func initTokens() {
 	Tokens = append(Tokens, Tipos...)
 }
 
-func verificarTokens(texto string, regras []string) {
-
-	for i := 0; i < len(regras); i++ {
-		r, _ := regexp.Compile(regras[i])
-		fmt.Println(r.FindAllString(texto, -1))
+func verificarTokens(texto []string, regras []string) {
+	fContador := 0
+	for i := 0; i < len(texto); i++ {
+		falha := true
+		for j := 0; j < len(regras); j++ {
+			r, _ := regexp.Compile(regras[j])
+			if r.MatchString(texto[i]) {
+				fmt.Println(strconv.Itoa(i+1) + " - " + texto[i] + " -> " + TiposTokens[j])
+				falha = false
+			}
+		}
+		if falha {
+			fContador++
+			fmt.Println(strconv.Itoa(i+1) + " - " + texto[i] + " -> Falha")
+		}
 	}
+	fmt.Println("Quantidade de Falhas: " + strconv.Itoa(fContador))
 
 }
 
@@ -86,15 +107,29 @@ func criarRegras() []string {
 
 	// Primeira regra: Declarações de variaveis
 
-	declaracao := "\\$("
+	declaracao := "^\\$("
 	for j := 0; j < len(Tipos); j++ {
 		if j > 0 {
 			declaracao += "|"
 		}
 		declaracao += "(" + Tipos[j] + ")"
 	}
-	declaracao += ") mimimi[a-zA-Z0-9]+"
+	declaracao += ")$"
+	// declaracao += ") mimimi[a-zA-Z0-9]+"
 
 	regras = append(regras, declaracao)
+
+	declaracao = "^mimimi[a-zA-Z0-9]+$"
+
+	regras = append(regras, declaracao)
+
+	declaracao = "^@$"
+
+	regras = append(regras, declaracao)
+	//^(gonzoIn\((mimimi[a-zA-Z0-9]+)\)|gonzoOut\((mimimi[a-zA-Z0-9]+|[0-9]+|"[a-zA-Z0-9]*")\))$
+	declaracao = "^(gonzoIn\\((mimimi[a-zA-Z0-9]+)\\)|gonzoOut\\((mimimi[a-zA-Z0-9]+|[0-9]+|\"[a-zA-Z0-9]*\")\\))$"
+
+	regras = append(regras, declaracao)
+
 	return regras
 }
