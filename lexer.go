@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"regexp"
 )
 
 // import (
@@ -43,9 +44,8 @@ func main() {
 		lexTokens = append(lexTokens, stringue)
 	}
 
-	// fmt.Println(lexTokens)
 	initTokens()
-	criarRegras()
+	verificarTokens(str, criarRegras())
 }
 
 func initTokens() {
@@ -72,27 +72,29 @@ func initTokens() {
 	Tokens = append(Tokens, Tipos...)
 }
 
-// func verificarTokens(lexTokens []string, regras []string) []string {
+func verificarTokens(texto string, regras []string) {
 
-// 	for i := 0; i < len(lexTokens); i++ {
-// 		for j := 0; j < len(regras); j++ {
-// 			//match = regexp.MatchString("$(enio)|(piggy)|()", lexTokens[i])
-// 		}
-// 	}
-// }
+	for i := 0; i < len(regras); i++ {
+		r, _ := regexp.Compile(regras[i])
+		fmt.Println(r.FindAllString(texto, -1))
+	}
 
-func criarRegras() {
-	// regras := []string{}
+}
+
+func criarRegras() []string {
+	regras := []string{}
 
 	// Primeira regra: Declarações de variaveis
 
-	declaracao := "^\\$("
+	declaracao := "\\$("
 	for j := 0; j < len(Tipos); j++ {
 		if j > 0 {
 			declaracao += "|"
 		}
 		declaracao += "(" + Tipos[j] + ")"
 	}
-	declaracao += ")$"
-	fmt.Println(declaracao)
+	declaracao += ") mimimi[a-zA-Z0-9]+"
+
+	regras = append(regras, declaracao)
+	return regras
 }
