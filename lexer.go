@@ -18,6 +18,7 @@ var Keywords []string
 var TiposTokens []string
 var Tokens []string // All of the tokens (including literals and keywords)
 var Tipos []string
+var Symbols []string
 
 // var TokenIds map[string]int // A map from the token names to their int ids
 // var Lexer *lex.Lexer // The lexer object. Use this to construct a Scanner
@@ -56,8 +57,10 @@ func initTokens() {
 	TiposTokens = []string{
 		"Tipo de Dados",
 		"Variável",
-		"Atribuição",
+		"Palavras Reservadas",
+		"Simbolos",
 		"Instruçaõ de Entrada ou Saida de Dados",
+		"Numeral",
 	}
 	Keywords = []string{
 		"seGonzo",
@@ -71,6 +74,23 @@ func initTokens() {
 		"-!GONZOEND!-",
 		"fazGonzo",
 		"acaboGonzo",
+	}
+	Symbols = []string{
+		"GG_GONZO",
+		"<",
+		">",
+		"<gonzo",
+		"\\|",
+		"\\(",
+		"\\)",
+		"==",
+		"@",
+		"GONZADD",
+		"GONZSUB",
+		"GONZDIV",
+		"GONZMULT",
+		"eGonzo",
+		"ouGonzo",
 	}
 	Tipos = []string{
 		"enio",
@@ -123,11 +143,39 @@ func criarRegras() []string {
 
 	regras = append(regras, declaracao)
 
-	declaracao = "^@$"
+	// declaracao = "^@$"
+	declaracao = "^("
+
+	for i := 0; i < len(Keywords); i++ {
+		if i > 0 {
+			declaracao += "|"
+		}
+		declaracao += Keywords[i]
+	}
+
+	declaracao += ")$"
 
 	regras = append(regras, declaracao)
+
+	declaracao = "^("
+
+	for i := 0; i < len(Symbols); i++ {
+		if i > 0 {
+			declaracao += "|"
+		}
+		declaracao += Symbols[i]
+	}
+
+	declaracao += ")$"
+	fmt.Println(declaracao)
+	regras = append(regras, declaracao)
+
 	//^(gonzoIn\((mimimi[a-zA-Z0-9]+)\)|gonzoOut\((mimimi[a-zA-Z0-9]+|[0-9]+|"[a-zA-Z0-9]*")\))$
-	declaracao = "^(gonzoIn\\((mimimi[a-zA-Z0-9]+)\\)|gonzoOut\\((mimimi[a-zA-Z0-9]+|[0-9]+|\"[a-zA-Z0-9]*\")\\))$"
+	declaracao = "^(gonzoIn\\((mimimi[a-zA-Z0-9]+)\\)|gonzoOut\\((mimimi[a-zA-Z0-9]+|[0-9]+|\"([a-zA-Z0-9])*\")\\))$"
+
+	regras = append(regras, declaracao)
+
+	declaracao = "^[0-9]+[.]{0,1}[0-9]*$"
 
 	regras = append(regras, declaracao)
 

@@ -1,8 +1,28 @@
-batata
-mimimiaddam
-f       odase
-$enio
-@
-gonzoIn(mimimiaddam)
-gonzoOut(5)
-gonzoIn(5)
+-!GONZOSTART!-
+
+mimimiI $enio GG_GONZO
+
+mimimiCookies $beto GG_GONZO
+mimimiI @ 0 GG_GONZO
+
+gonzoOut("Informe") GG_GONZO
+
+gonzoIn(mimimiCookies) GG_GONZO
+
+enquantoGonzo ( mimimiI < 10 )
+fazGonzo
+
+    mimimiCookies @ mimimiCookies GONZMULT 1.2 GG_GONZO
+    mimimiOut ( mimimiCookies )
+
+    seGonzo ( mimimiCookies > 50 )
+    fazGonzo
+
+        gonzoOut("Eita") GG_GONZO
+
+    acaboGonzo
+
+    mimimiI @ mimimiI GONZADD 1 GG_GONZO
+acaboGonzo
+
+-!GONZOEND!-
