@@ -1,0 +1,51 @@
+1 - -!GONZOSTART!- -> Palavras Reservadas
+2 - mimimiI -> Variável
+3 - $enio -> Tipo de Dados
+4 - GG_GONZO -> Simbolos
+5 - mimimiCookies -> Variável
+6 - $beto -> Tipo de Dados
+7 - GG_GONZO -> Simbolos
+8 - mimimiI -> Variável
+9 - @ -> Simbolos
+10 - 0 -> Numeral
+11 - GG_GONZO -> Simbolos
+12 - gonzoOut("Informe_quantidade_de_cookies") -> Instrução de Entrada ou Saida de Dados
+13 - GG_GONZO -> Simbolos
+14 - gonzoIn(mimimiCookies) -> Instrução de Entrada ou Saida de Dados
+15 - GG_GONZO -> Simbolos
+16 - enquantoGonzo -> Palavras Reservadas
+17 - ( -> Simbolos
+18 - mimimiI -> Variável
+19 - < -> Simbolos
+20 - 10 -> Numeral
+21 - ) -> Simbolos
+22 - fazGonzo -> Palavras Reservadas
+23 - mimimiCookies -> Variável
+24 - @ -> Simbolos
+25 - mimimiCookies -> Variável
+26 - GONZMULT -> Simbolos
+27 - 1.2 -> Numeral
+28 - GG_GONZO -> Simbolos
+29 - mimimiOut -> Variável
+30 - ( -> Simbolos
+31 - mimimiCookies -> Variável
+32 - ) -> Simbolos
+33 - seGonzo -> Palavras Reservadas
+34 - ( -> Simbolos
+35 - mimimiCookies -> Variável
+36 - > -> Simbolos
+37 - 50 -> Numeral
+38 - ) -> Simbolos
+39 - fazGonzo -> Palavras Reservadas
+40 - gonzoOut("Eita_quantos_cookies") -> Instrução de Entrada ou Saida de Dados
+41 - GG_GONZO -> Simbolos
+42 - acaboGonzo -> Palavras Reservadas
+43 - mimimiI -> Variável
+44 - @ -> Simbolos
+45 - mimimiI -> Variável
+46 - GONZADD -> Simbolos
+47 - 1 -> Numeral
+48 - GG_GONZO -> Simbolos
+49 - acaboGonzo -> Palavras Reservadas
+50 - -!GONZOEND!- -> Palavras Reservadas
+Quantidade de Falhas: 0
