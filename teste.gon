@@ -4,6 +4,7 @@
 mimimiI $enioGG_GONZO
 mimimiCookies $betoGG_GONZO
 mimimiI @ 0GG_GONZO
+mimimiTexto @ "Teste 123"GG_GONZO
 errou
 gonzoOut("Informe quantidade de cookies")GG_GONZO
 

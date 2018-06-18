@@ -4,25 +4,18 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-// import (
-// 	lex "github.com/timtadh/lexmachine"
-// 	"github.com/timtadh/lexmachine/machines"
-// )
-
 var Keywords []string
 var TiposTokens []string
-var Tokens []string // All of the tokens (including literals and keywords)
+var Tokens []string
 var Tipos []string
 var Symbols []string
 var Textos []string
-
-// var TokenIds map[string]int // A map from the token names to their int ids
-// var Lexer *lex.Lexer // The lexer object. Use this to construct a Scanner
 
 func main() {
 	//lexTokens := []string{}
@@ -78,7 +71,9 @@ func verificarTokens(text string, words []string, regras []string) {
 	f.WriteString("<h1> Quantidade de Falhas: " + strconv.Itoa(fContador) + "</h1>")
 	f.WriteString("<img src=\"pedrosolaandandodemoto.gif\">")
 	f.WriteString("</body> </html>")
-	os.Open("result.html")
+	f.Close()
+	cmd := exec.Command("cmd", "/C", "start", "result.html")
+	cmd.Start()
 }
 
 func verificarTexto(text string) string {
