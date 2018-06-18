@@ -1,28 +1,28 @@
+
 -!GONZOSTART!-
 
-mimimiI $enio GG_GONZO
+mimimiI $enioGG_GONZO
+mimimiCookies $betoGG_GONZO
+mimimiI @ 0GG_GONZO
+errou
+gonzoOut("Informe quantidade de cookies")GG_GONZO
 
-mimimiCookies $beto GG_GONZO
-mimimiI @ 0 GG_GONZO
+gonzoIn(mimimiCookies)GG_GONZO
 
-gonzoOut("Informe_quantidade_de_cookies") GG_GONZO
-
-gonzoIn(mimimiCookies) GG_GONZO
-
-enquantoGonzo ( mimimiI < 10 )
+enquantoGonzo (mimimiI<10)
 fazGonzo
 
-    mimimiCookies @ mimimiCookies GONZMULT 1.2 GG_GONZO
-    mimimiOut ( mimimiCookies )
+    mimimiCookies @ mimimiCookies GONZMULT 1.2GG_GONZO
+    mimimiOut (mimimiCookies)
 
-    seGonzo ( mimimiCookies > 50 )
+    seGonzo (mimimiCookies>50)
     fazGonzo
-
-        gonzoOut("Eita_quantos_cookies") GG_GONZO
+        gonzoOut("Eita quantos cookies")GG_GONZO
 
     acaboGonzo
 
-    mimimiI @ mimimiI GONZADD 1 GG_GONZO
+    mimimiI @ mimimiI GONZADD 1GG_GONZO
+    
 acaboGonzo
 
 -!GONZOEND!-
